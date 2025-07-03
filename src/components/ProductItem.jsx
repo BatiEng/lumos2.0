@@ -31,7 +31,7 @@ function ProductItem({ row, stokKodu, urunIsmi, urunAdedi, onUretimeGonder }) {
         initial="initial"
         animate="animate"
         whileHover="hover"
-        className="flex flex-wrap md:flex-nowrap items-center justify-between gap-3 p-4 bg-gray-50 border border-gray-200/50 rounded-xl shadow-sm mb-2 text-sm text-gray-800"
+        className="flex flex-wrap md:flex-nowrap items-center justify-between gap-3 px-4 py-1 bg-gray-50 border border-gray-200/50 rounded-xl shadow-sm mb-2 text-sm text-gray-800"
       >
         <div className="w-12 font-mono text-gray-500 font-medium">{row}</div>
         <div className="w-40 font-semibold text-gray-700">{stokKodu}</div>
@@ -45,10 +45,9 @@ function ProductItem({ row, stokKodu, urunIsmi, urunAdedi, onUretimeGonder }) {
           variants={buttonVariants}
           whileHover="hover"
           whileTap="tap"
-          onClick={onUretimeGonder}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium cursor-pointer"
         >
-          Üretime Gönder
+          İncele
         </motion.button>
       </motion.div>
     </Link>

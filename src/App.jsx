@@ -10,6 +10,9 @@ import AddProduct from "./pages/AddProduct";
 import ProductDetail from "./pages/ProductDetail";
 import CariCards from "./pages/CariCards";
 import AddCariCard from "./pages/AddCariCard";
+import CariCardDetail from "./pages/CariCardDetail";
+import AlisFaturalari from "./pages/AlisFaturalari";
+import SatisFaturalari from "./pages/SatisFaturalari";
 
 function App() {
   return (
@@ -35,10 +38,25 @@ function App() {
             path="/urun-yonetimi/urunler/:id"
             element={<ProductDetail />}
           />
-          <Route path="/finans-yonetimi/cari-kartlar" element={<CariCards />} />
           <Route
-            path="/finans-yonetimi/cari-kart-ekle"
+            path="/finans-yonetimi/cari-hesaplar"
+            element={<CariCards />}
+          />
+          <Route
+            path="/finans-yonetimi/cari-hesaplar/:id"
+            element={<CariCardDetail />}
+          />
+          <Route
+            path="/finans-yonetimi/cari-hesap-ekle"
             element={<AddCariCard />}
+          />
+          <Route
+            path="/finans-yonetimi/alis-faturalari"
+            element={<AlisFaturalari />}
+          />
+          <Route
+            path="/finans-yonetimi/satis-faturalari"
+            element={<SatisFaturalari />}
           />
         </Routes>
       </div>

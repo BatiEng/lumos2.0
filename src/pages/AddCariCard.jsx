@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const containerVariants = {
   initial: { opacity: 0, y: 20 },
@@ -124,7 +125,7 @@ function AddCariCard() {
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium cursor-pointer"
           >
             Kaydet
           </motion.button>
@@ -134,10 +135,22 @@ function AddCariCard() {
             whileHover="hover"
             whileTap="tap"
             onClick={handleReset}
-            className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-lg text-sm font-medium"
+            className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-lg text-sm font-medium cursor-pointer"
           >
             Temizle
           </motion.button>
+          <Link to={"/finans-yonetimi/cari-hesaplar"}>
+            <motion.button
+              type="button"
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+              onClick={handleReset}
+              className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-lg text-sm font-medium cursor-pointer"
+            >
+              Geri Dön
+            </motion.button>
+          </Link>
         </div>
       </form>
     </motion.div>

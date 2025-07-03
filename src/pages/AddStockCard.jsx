@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
-// Mock data for suppliers
 const mockSuppliers = [
   "Tech Suppliers Ltd.",
   "Global Imports Inc.",
@@ -10,7 +10,6 @@ const mockSuppliers = [
   "Eco Supplies",
 ];
 
-// Animation variants for the container
 const containerVariants = {
   initial: { opacity: 0, y: 20 },
   animate: {
@@ -20,7 +19,6 @@ const containerVariants = {
   },
 };
 
-// Animation variants for buttons and dropdown
 const buttonVariants = {
   hover: {
     scale: 1.1,
@@ -34,16 +32,18 @@ function AddStockCard() {
   const [formData, setFormData] = useState({
     urunKodu: "",
     urunIsmi: "",
-    stokAdedi: "",
+    birim: "",
     tedarikciIsmi: "",
     alisFiyati: "",
     satisFiyati: "",
     birimMiktari: "",
     kdvOrani: "0",
+    stokAdedi: "",
     bildirimMiktari: "",
   });
   const [searchTerm, setSearchTerm] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [showNotificationFields, setShowNotificationFields] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,7 +64,6 @@ function AddStockCard() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    // Add logic to handle form submission (e.g., API call)
   };
 
   const filteredSuppliers = mockSuppliers.filter((supplier) =>
@@ -92,7 +91,7 @@ function AddStockCard() {
             name="urunKodu"
             value={formData.urunKodu}
             onChange={handleChange}
-            className="mt-1 text-lg font-mono text-gray-700 bg-white border border-gray-300 rounded-md p-2 focus:outline-none focus:border-gray-500"
+            className="mt-1 text-lg font-mono text-gray-700 border border-gray-300 rounded-md p-2"
             required
           />
         </div>
@@ -103,23 +102,24 @@ function AddStockCard() {
             name="urunIsmi"
             value={formData.urunIsmi}
             onChange={handleChange}
-            className="mt-1 text-lg font-light text-gray-700 bg-white border border-gray-300 rounded-md p-2 focus:outline-none focus:border-gray-500"
+            className="mt-1 text-lg font-light text-gray-700 border border-gray-300 rounded-md p-2"
             required
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-sm font-medium text-gray-500">
-            Stok Adedi
-          </label>
-          <input
-            type="number"
-            name="stokAdedi"
-            value={formData.stokAdedi}
+          <label className="text-sm font-medium text-gray-500">Birim</label>
+          <select
+            name="birim"
+            value={formData.birim}
             onChange={handleChange}
-            className="mt-1 text-lg font-mono text-gray-700 bg-white border border-gray-300 rounded-md p-2 focus:outline-none focus:border-gray-500"
-            min="0"
+            className="mt-1 text-lg font-mono text-gray-700 border border-gray-300 rounded-md p-2"
             required
-          />
+          >
+            <option value="">Seçiniz</option>
+            <option value="Adet">Adet</option>
+            <option value="Metre">Metre</option>
+            <option value="Kilogram">Kilogram</option>
+          </select>
         </div>
         <div className="flex flex-col relative">
           <label className="text-sm font-medium text-gray-500">
@@ -130,7 +130,7 @@ function AddStockCard() {
             value={searchTerm}
             onChange={handleSearchChange}
             onFocus={() => setIsDropdownOpen(true)}
-            className="mt-1 text-lg font-light text-gray-700 bg-white border border-gray-300 rounded-md p-2 focus:outline-none focus:border-gray-500"
+            className="mt-1 text-lg font-light text-gray-700 border border-gray-300 rounded-md p-2"
             placeholder="Tedarikçi ara..."
             required
           />
@@ -168,9 +168,7 @@ function AddStockCard() {
             name="alisFiyati"
             value={formData.alisFiyati}
             onChange={handleChange}
-            className="mt-1 text-lg font-mono text-gray-700 bg-white border border-gray-300 rounded-md p-2 focus:outline-none focus:border-gray-500"
-            min="0"
-            step="0.01"
+            className="mt-1 text-lg font-mono text-gray-700 border border-gray-300 rounded-md p-2"
             required
           />
         </div>
@@ -183,35 +181,30 @@ function AddStockCard() {
             name="satisFiyati"
             value={formData.satisFiyati}
             onChange={handleChange}
-            className="mt-1 text-lg font-mono text-gray-700 bg-white border border-gray-300 rounded-md p-2 focus:outline-none focus:border-gray-500"
-            min="0"
-            step="0.01"
+            className="mt-1 text-lg font-mono text-gray-700 border border-gray-300 rounded-md p-2"
             required
           />
         </div>
         <div className="flex flex-col">
           <label className="text-sm font-medium text-gray-500">
-            Birim Bazında Miktarı (Adet)
+            Birim Miktarı
           </label>
           <input
             type="number"
             name="birimMiktari"
             value={formData.birimMiktari}
             onChange={handleChange}
-            className="mt-1 text-lg font-mono text-gray-700 bg-white border border-gray-300 rounded-md p-2 focus:outline-none focus:border-gray-500"
-            min="1"
+            className="mt-1 text-lg font-mono text-gray-700 border border-gray-300 rounded-md p-2"
             required
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-sm font-medium text-gray-500">
-            KDV Oranı (%)
-          </label>
+          <label className="text-sm font-medium text-gray-500">KDV Oranı</label>
           <select
             name="kdvOrani"
             value={formData.kdvOrani}
             onChange={handleChange}
-            className="mt-1 text-lg font-mono text-gray-700 bg-white border border-gray-300 rounded-md p-2 focus:outline-none focus:border-gray-500"
+            className="mt-1 text-lg font-mono text-gray-700 border border-gray-300 rounded-md p-2"
             required
           >
             <option value="0">0%</option>
@@ -222,19 +215,46 @@ function AddStockCard() {
         </div>
         <div className="flex flex-col">
           <label className="text-sm font-medium text-gray-500">
-            Bildirim Miktarı
+            Stok Adedi
           </label>
           <input
             type="number"
-            name="bildirimMiktari"
-            value={formData.bildirimMiktari}
+            name="stokAdedi"
+            value={formData.stokAdedi}
             onChange={handleChange}
-            className="mt-1 text-lg font-mono text-gray-700 bg-white border border-gray-300 rounded-md p-2 focus:outline-none focus:border-gray-500"
-            min="0"
-            required
+            className="mt-1 text-lg font-mono text-gray-700 border border-gray-300 rounded-md p-2"
           />
         </div>
+        <div className="col-span-1 md:col-span-2 flex items-center gap-2 mt-4">
+          <input
+            type="checkbox"
+            checked={showNotificationFields}
+            onChange={(e) => setShowNotificationFields(e.target.checked)}
+            className="w-4 h-4"
+          />
+          <label className="text-sm text-gray-600">
+            Stok bildirimi almak istiyorum
+          </label>
+        </div>
+
+        {showNotificationFields && (
+          <>
+            <div className="flex flex-col">
+              <label className="text-sm font-medium text-gray-500">
+                Bildirim Miktarı
+              </label>
+              <input
+                type="number"
+                name="bildirimMiktari"
+                value={formData.bildirimMiktari}
+                onChange={handleChange}
+                className="mt-1 text-lg font-mono text-gray-700 border border-gray-300 rounded-md p-2"
+              />
+            </div>
+          </>
+        )}
       </form>
+
       <div className="mt-8 flex justify-end gap-3">
         <motion.button
           variants={buttonVariants}
@@ -244,31 +264,17 @@ function AddStockCard() {
           className="relative bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium overflow-hidden group cursor-pointer"
         >
           <span className="relative z-10">Kaydet</span>
-          <span className="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         </motion.button>
-        <motion.button
-          variants={buttonVariants}
-          whileHover="hover"
-          whileTap="tap"
-          onClick={() => {
-            setFormData({
-              urunKodu: "",
-              urunIsmi: "",
-              stokAdedi: "",
-              tedarikciIsmi: "",
-              alisFiyati: "",
-              satisFiyati: "",
-              birimMiktari: "",
-              kdvOrani: "0",
-              bildirimMiktari: "",
-            });
-            setSearchTerm("");
-          }}
-          className="relative bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium overflow-hidden group cursor-pointer"
-        >
-          <span className="relative z-10">Temizle</span>
-          <span className="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        </motion.button>
+        <Link to="/stok-yonetimi/stok-kartlari">
+          <motion.button
+            variants={buttonVariants}
+            whileHover="hover"
+            whileTap="tap"
+            className="relative bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium overflow-hidden group cursor-pointer"
+          >
+            <span className="relative z-10">Geri Dön</span>
+          </motion.button>
+        </Link>
       </div>
     </motion.div>
   );

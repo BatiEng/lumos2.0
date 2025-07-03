@@ -38,7 +38,7 @@ function HomePage() {
           variants={childVariants}
           className="text-4xl md:text-5xl font-semibold text-gray-800 mb-4"
         >
-          Lumos 8.0 ile Tanışın
+          Lumos 2.0 ile Tanışın
         </motion.h1>
         <motion.p
           variants={childVariants}
@@ -71,7 +71,7 @@ function HomePage() {
           variants={childVariants}
           className="text-3xl font-semibold text-gray-700 mb-8 text-center"
         >
-          Neden Lumos 8.0?
+          Neden Lumos 2.0?
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <motion.div
@@ -130,7 +130,7 @@ function HomePage() {
           variants={childVariants}
           className="text-lg text-gray-600 max-w-2xl mx-auto mb-8"
         >
-          Binlerce işletme gibi Lumos 8.0’ı kullanarak stok yönetimini
+          Binlerce işletme gibi Lumos 2.0’ı kullanarak stok yönetimini
           kolaylaştırın.
         </motion.p>
         <motion.div variants={childVariants}>

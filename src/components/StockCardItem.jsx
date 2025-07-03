@@ -43,7 +43,7 @@ function StockCardItem({
         initial="initial"
         animate="animate"
         whileHover="hover"
-        className="flex items-center justify-between p-4 bg-gray-50 border border-gray-200/50 rounded-xl shadow-sm mb-3 text-sm text-gray-800 transition-all duration-300 hover:border-gray-300"
+        className="flex items-center justify-between px-4 py-1 bg-gray-50 border border-gray-200/50 rounded-xl shadow-sm mb-3 text-sm text-gray-800 transition-all duration-300 hover:border-gray-300"
       >
         <div className="w-12 font-mono text-gray-500 font-medium">{row}</div>
         <div className="w-40 font-semibold text-gray-700 tracking-tight">
@@ -58,10 +58,9 @@ function StockCardItem({
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
-            className="relative bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium overflow-hidden group cursor-pointer"
+            className=" relative bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium overflow-hidden group cursor-pointer"
           >
-            <span className="relative z-10">İncele</span>
-            <span className="absolute inset-0 bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <span className="relative z-10 ">İncele</span>
           </motion.button>
         </Link>
       </motion.div>

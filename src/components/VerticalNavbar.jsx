@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 function VerticalNavbar() {
   const [stokOpen, setStokOpen] = useState(false);
-  const [urunOpen, setUrunOpen] = useState(false);
+  const [teklifOpen, setTeklifOpen] = useState(false);
   const [finansOpen, setFinansOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -64,12 +64,12 @@ function VerticalNavbar() {
       </AnimatePresence>
 
       {/* Desktop Sidebar */}
-      <div className="hidden md:flex h-screen w-64 bg-gradient-to-b from-[#1a1f2e] to-[#252e3b] p-6 fixed border-r border-gray-700/30 shadow-lg">
+      <div className="hidden md:flex h-screen w-64 bg-gray-900 p-6 fixed border-r border-gray-700/30 shadow-lg">
         <SidebarContent
           stokOpen={stokOpen}
           setStokOpen={setStokOpen}
-          urunOpen={urunOpen}
-          setUrunOpen={setUrunOpen}
+          teklifOpen={teklifOpen}
+          setTeklifOpen={setTeklifOpen}
           finansOpen={finansOpen}
           setFinansOpen={setFinansOpen}
           handleLinkClick={handleLinkClick}
@@ -82,8 +82,8 @@ function VerticalNavbar() {
 function SidebarContent({
   stokOpen,
   setStokOpen,
-  urunOpen,
-  setUrunOpen,
+  teklifOpen,
+  setTeklifOpen,
   finansOpen,
   setFinansOpen,
   handleLinkClick,
@@ -94,9 +94,9 @@ function SidebarContent({
   };
 
   return (
-    <div className="flex flex-col gap-6 text-gray-200 w-full h-full overflow-y-auto">
+    <div className="flex flex-col gap-6  text-gray-200 w-full h-full overflow-y-auto">
       <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#616e80] to-[#2f3747]">
-        Lumos 8.0
+        Lumos 2.0
       </h1>
 
       <nav className="flex flex-col gap-2 text-base font-medium flex-grow">
@@ -107,6 +107,22 @@ function SidebarContent({
         >
           Anasayfa
         </Link>
+        <DropdownSection
+          label="Finans Yönetimi"
+          isOpen={finansOpen}
+          setOpen={setFinansOpen}
+          links={[
+            { to: "/finans-yonetimi/cari-hesaplar", text: "Cari Hesaplar" },
+            { to: "/finans-yonetimi/alis-faturalari", text: "Alış Faturaları" },
+            {
+              to: "/finans-yonetimi/satis-faturalari",
+              text: "Satış Faturaları",
+            },
+            { to: "/finans-yonetimi/odemeler", text: "Ödemeler" },
+          ]}
+          handleLinkClick={handleLinkClick}
+          dropdownVariants={dropdownVariants}
+        />
 
         <DropdownSection
           label="Stok Yönetimi"
@@ -114,57 +130,22 @@ function SidebarContent({
           setOpen={setStokOpen}
           links={[
             { to: "/stok-yonetimi/stok-kartlari", text: "Stok Kartları" },
-            { to: "/stok-yonetimi/stok-ekle", text: "Stok Kartı Ekle" },
+            { to: "/urun-yonetimi/urunler", text: "Ürün Kartları" },
           ]}
           handleLinkClick={handleLinkClick}
           dropdownVariants={dropdownVariants}
         />
-
         <DropdownSection
-          label="Ürün Yönetimi"
-          isOpen={urunOpen}
-          setOpen={setUrunOpen}
+          label="Teklif Yönetimi"
+          isOpen={teklifOpen}
+          setOpen={setTeklifOpen}
           links={[
-            { to: "/urun-yonetimi/urunler", text: "Ürünler" },
-            { to: "/urun-yonetimi/urun-ekle", text: "Ürün Ekle" },
+            { to: "/teklif-yonetimi/icmal-olustur", text: "İcmal Oluştur" },
           ]}
           handleLinkClick={handleLinkClick}
           dropdownVariants={dropdownVariants}
         />
 
-        <DropdownSection
-          label="Finans Yönetimi"
-          isOpen={finansOpen}
-          setOpen={setFinansOpen}
-          links={[
-            { to: "/finans-yonetimi/cari-kartlar", text: "Cari Kartlar" },
-            { to: "/finans-yonetimi/cari-kart-ekle", text: "Cari Kart Ekle" },
-          ]}
-          handleLinkClick={handleLinkClick}
-          dropdownVariants={dropdownVariants}
-        />
-
-        <Link
-          to="/gelir"
-          onClick={handleLinkClick}
-          className="px-3 py-2 rounded-lg hover:bg-[#2f3747]/50"
-        >
-          Gelirler
-        </Link>
-        <Link
-          to="/gider"
-          onClick={handleLinkClick}
-          className="px-3 py-2 rounded-lg hover:bg-[#2f3747]/50"
-        >
-          Giderler
-        </Link>
-        <Link
-          to="/raporlar"
-          onClick={handleLinkClick}
-          className="px-3 py-2 rounded-lg hover:bg-[#2f3747]/50"
-        >
-          Raporlar
-        </Link>
         <Link
           to="/ayarlar"
           onClick={handleLinkClick}

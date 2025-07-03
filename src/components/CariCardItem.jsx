@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 // Kart animasyonları
 const itemVariants = {
@@ -24,47 +25,49 @@ const buttonVariants = {
 
 function CariCardItem({ row, unvan, bakiye, onDokumClick, onOdemeClick }) {
   return (
-    <motion.div
-      variants={itemVariants}
-      initial="initial"
-      animate="animate"
-      whileHover="hover"
-      className="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-xl shadow-sm mb-2 text-sm text-gray-800"
-    >
-      <div className="w-12 font-mono text-gray-500 font-medium">{row}</div>
-      <div className="w-64 font-semibold text-gray-700">{unvan}</div>
-      <div
-        className={`w-32 text-right font-mono ${
-          bakiye > 0
-            ? "text-green-600"
-            : bakiye < 0
-            ? "text-red-500"
-            : "text-gray-500"
-        }`}
+    <Link to={"/finans-yonetimi/cari-hesaplar/asd"}>
+      <motion.div
+        variants={itemVariants}
+        initial="initial"
+        animate="animate"
+        whileHover="hover"
+        className="flex items-center justify-between px-4 py-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-2 text-sm text-gray-800"
       >
-        {parseFloat(bakiye).toFixed(2)} ₺
-      </div>
-      <div className="w-64 flex justify-end gap-2">
-        <motion.button
-          variants={buttonVariants}
-          whileHover="hover"
-          whileTap="tap"
-          onClick={onDokumClick}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm font-medium"
+        <div className="w-12 font-mono text-gray-500 font-medium">{row}</div>
+        <div className="w-64 font-semibold text-gray-700">{unvan}</div>
+        <div
+          className={`w-32 text-right font-mono ${
+            bakiye > 0
+              ? "text-green-600"
+              : bakiye < 0
+              ? "text-red-500"
+              : "text-gray-500"
+          }`}
         >
-          Cari Döküm
-        </motion.button>
-        <motion.button
-          variants={buttonVariants}
-          whileHover="hover"
-          whileTap="tap"
-          onClick={onOdemeClick}
-          className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg text-sm font-medium"
-        >
-          Ödeme
-        </motion.button>
-      </div>
-    </motion.div>
+          {parseFloat(bakiye).toFixed(2)} ₺
+        </div>
+        <div className="w-64 flex justify-end gap-2">
+          <motion.button
+            variants={buttonVariants}
+            whileHover="hover"
+            whileTap="tap"
+            onClick={onDokumClick}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm font-medium cursor-pointer"
+          >
+            Cari Döküm
+          </motion.button>
+          <motion.button
+            variants={buttonVariants}
+            whileHover="hover"
+            whileTap="tap"
+            onClick={onOdemeClick}
+            className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg text-sm font-medium cursor-pointer"
+          >
+            Ödeme
+          </motion.button>
+        </div>
+      </motion.div>
+    </Link>
   );
 }
 

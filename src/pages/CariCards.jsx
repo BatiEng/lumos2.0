@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import CariCardItem from "../components/CariCardItem"; // animasyonlu item
+import { Link } from "react-router-dom";
+import CariCardItem from "../components/CariCardItem";
 
 // Mock data
 const mockCariList = [
@@ -47,9 +48,15 @@ function CariCards() {
       animate="animate"
       className="max-w-6xl mx-auto p-6 bg-gray-100 min-h-screen"
     >
-      <h2 className="text-2xl font-semibold text-gray-700 mb-6">
-        Cari Kartlar
-      </h2>
+      <div className="flex gap-10 items-center mb-6">
+        <h2 className="text-2xl font-semibold text-gray-700">Cari Hesaplar</h2>
+        <Link
+          to="/finans-yonetimi/cari-hesap-ekle"
+          className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition"
+        >
+          Cari Hesap Ekle
+        </Link>
+      </div>
 
       <div className="bg-gray-50 border border-gray-200/50 rounded-xl shadow-sm p-4">
         {/* Header */}
