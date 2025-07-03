@@ -15,6 +15,9 @@ import AlisFaturalari from "./pages/AlisFaturalari";
 import SatisFaturalari from "./pages/SatisFaturalari";
 import AddAlisFatura from "./pages/AddAlisFatura";
 import AddSatisFatura from "./pages/AddSatisFatura";
+import Payments from "./pages/Payments";
+import PaymentDetail from "./pages/PaymentDetail";
+import AlisFaturasiDetail from "./pages/AlisFaturasiDetail";
 
 function App() {
   return (
@@ -57,6 +60,10 @@ function App() {
             element={<AlisFaturalari />}
           />
           <Route
+            path="/finans-yonetimi/alis-faturalari/:id"
+            element={<AlisFaturasiDetail />}
+          />
+          <Route
             path="/finans-yonetimi/alis-faturalari/alis-faturasi-ekle"
             element={<AddAlisFatura />}
           />
@@ -67,6 +74,11 @@ function App() {
           <Route
             path="/finans-yonetimi/satis-faturalari/satis-faturasi-ekle"
             element={<AddSatisFatura />}
+          />
+          <Route path="/finans-yonetimi/odemeler" element={<Payments />} />
+          <Route
+            path="/finans-yonetimi/odemeler/:id"
+            element={<PaymentDetail />}
           />
         </Routes>
       </div>

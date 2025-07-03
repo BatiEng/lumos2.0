@@ -54,7 +54,7 @@ function CariCardItem({ row, unvan, bakiye, onDokumClick, onOdemeClick }) {
             onClick={onDokumClick}
             className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm font-medium cursor-pointer"
           >
-            Cari Döküm
+            Detay
           </motion.button>
           <motion.button
             variants={buttonVariants}
