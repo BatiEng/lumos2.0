@@ -13,6 +13,8 @@ import AddCariCard from "./pages/AddCariCard";
 import CariCardDetail from "./pages/CariCardDetail";
 import AlisFaturalari from "./pages/AlisFaturalari";
 import SatisFaturalari from "./pages/SatisFaturalari";
+import AddAlisFatura from "./pages/AddAlisFatura";
+import AddSatisFatura from "./pages/AddSatisFatura";
 
 function App() {
   return (
@@ -55,8 +57,16 @@ function App() {
             element={<AlisFaturalari />}
           />
           <Route
+            path="/finans-yonetimi/alis-faturalari/alis-faturasi-ekle"
+            element={<AddAlisFatura />}
+          />
+          <Route
             path="/finans-yonetimi/satis-faturalari"
             element={<SatisFaturalari />}
+          />
+          <Route
+            path="/finans-yonetimi/satis-faturalari/satis-faturasi-ekle"
+            element={<AddSatisFatura />}
           />
         </Routes>
       </div>

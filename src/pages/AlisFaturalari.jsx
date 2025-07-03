@@ -72,7 +72,7 @@ const AlisFaturalari = () => {
           <h2 className="text-3xl font-bold text-gray-800 tracking-tight">
             Alış Faturaları
           </h2>
-          <Link to="/finans-yonetimi/yeni-alis-faturasi">
+          <Link to="/finans-yonetimi/alis-faturalari/alis-faturasi-ekle">
             <motion.button
               variants={buttonVariants}
               whileHover="hover"

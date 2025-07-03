@@ -72,7 +72,7 @@ const SatisFaturalari = () => {
           <h2 className="text-3xl font-bold text-gray-800 tracking-tight">
             Satış Faturaları
           </h2>
-          <Link to="/finans-yonetimi/yeni-satis-faturasi">
+          <Link to="/finans-yonetimi/satis-faturalari/satis-faturasi-ekle">
             <motion.button
               variants={buttonVariants}
               whileHover="hover"
