@@ -53,8 +53,8 @@ function VerticalNavbar() {
             <SidebarContent
               stokOpen={stokOpen}
               setStokOpen={setStokOpen}
-              urunOpen={urunOpen}
-              setUrunOpen={setUrunOpen}
+              teklifOpen={teklifOpen}
+              setTeklifOpen={setTeklifOpen}
               finansOpen={finansOpen}
               setFinansOpen={setFinansOpen}
               handleLinkClick={handleLinkClick}
